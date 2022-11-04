@@ -1,4 +1,4 @@
-# NestJS REST API boilerplate
+# React WebApp with Authentication boilerplate
 
 ## Description
 
@@ -6,7 +6,7 @@ Near Sea Technologies React WebApp with Authentication boilerplate
 
 ## Table of Contents
 
--   [NestJS REST API boilerplate]
+-   [React WebApp with Authentication boilerplate]
     -   [Description](#description)
     -   [Table of Contents](#table-of-contents)
     -   [Features](#features)
