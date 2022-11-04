@@ -1,0 +1,131 @@
+{
+	"extends": [
+		"airbnb",
+		"airbnb-typescript",
+		"airbnb/hooks",
+		"prettier",
+		"plugin:react-hooks/recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
+	"plugins": ["react", "@typescript-eslint", "eslint-plugin-node", "prettier", "react-hooks"],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"project": "./tsconfig.json",
+		"ecmaVersion": 8,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"settings": {
+		"react": {
+			"pragma": "React",
+			"version": "detect"
+		},
+		"import/resolver": {
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"],
+				"moduleDirectory": ["node_modules", "src"]
+			}
+		}
+	},
+	"rules": {
+		"array-bracket-spacing": [2, "never"],
+		"class-methods-use-this": [1], // not sure of 1 or 0
+		"camelcase": [1],
+		"dot-notation": "error",
+		"react/function-component-definition": [2, { "namedComponents": "arrow-function" }],
+		"import/no-cycle": "off",
+		"no-restricted-exports": 0,
+		"import/no-named-as-default": 0,
+		"import/prefer-default-export": "off",
+		"no-tabs": [0],
+		"indent": [
+			2,
+			"tab",
+			{
+				"SwitchCase": 1,
+				"ignoredNodes": [
+					"ArrowFunctionExpression Identifier",
+					"ArrowFunctionExpression BlockStatement",
+					"ArrowFunctionExpression TSPropertySignature",
+					// "TSTypeParameterInstantiation",
+					"NoSubstitutionTemplateLiteral",
+					"TemplateLiteral",
+					"JSXElement *",
+					"TSTypeAliasDeclaration *"
+				],
+				// "FunctionExpression": {"body": 1, "parameters": 1},
+				"FunctionDeclaration": { "body": 1, "parameters": 1 },
+				"offsetTernaryExpressions": true,
+				"flatTernaryExpressions": true
+			}
+		],
+		"linebreak-style": "off", // Don"t play nicely with Windows.
+		"max-len": [
+			2,
+			120,
+			4,
+			{
+				"ignoreComments": true,
+				"ignoreStrings": true,
+				"ignoreTemplateLiterals": true,
+				"ignoreRegExpLiterals": true
+			}
+		],
+		"no-case-declarations": [1],
+		"no-const-assign": [1],
+		"no-multiple-empty-lines": [2, { "max": 1, "maxEOF": 1, "maxBOF": 0 }],
+		"no-param-reassign": [1],
+		"no-return-assign": [1],
+		"no-this-before-super": [1],
+		"no-undef": [1],
+		"no-underscore-dangle": [0, "always"],
+		"no-unreachable": [1],
+		"no-unused-expressions": 0,
+		"@typescript-eslint/no-unused-expressions": [2, { "allowShortCircuit": true }],
+		"no-unused-vars": [1],
+		"@typescript-eslint/no-unused-vars": [0],
+		// "no-use-before-define": [2, { "functions": false }],
+		"object-curly-spacing": [2, "always"],
+		"prefer-const": 1,
+		"quotes": [1, "single", "avoid-escape"],
+		"react-hooks/rules-of-hooks": "warn",
+		"react/prop-types": "off",
+		"react/destructuring-assignment": "off",
+		"react-hooks/exhaustive-deps": "off",
+		"react/jsx-curly-newline": "off",
+		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-props-no-spreading": "off",
+		"react/jsx-wrap-multilines": [2, { "declaration": false, "assignment": false }],
+		"react/no-array-index-key": [1],
+		"react/no-unescaped-entities": 0,
+		"react/prefer-es6-class": 0,
+		"react/require-default-props": [2],
+		"semi": [0, "never"],
+		"space-in-parens": [2, "never"],
+		"template-curly-spacing": "off",
+		"@typescript-eslint/no-use-before-define": ["error"],
+		"no-empty-function": "off",
+		"@typescript-eslint/no-empty-function": ["error"],
+		"valid-typeof": [1],
+		"import/extensions": [
+			"error",
+			"ignorePackages",
+			{
+				"js": "never",
+				"jsx": "never",
+				"ts": "never",
+				"tsx": "never"
+			}
+		],
+		"radix": 0
+	},
+	"env": {
+		"browser": true,
+		"jest": true,
+		"node": true,
+		"es6": true
+	}
+}

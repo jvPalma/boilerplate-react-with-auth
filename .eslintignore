@@ -1,0 +1,12 @@
+# Dependency directories
+node_modules
+
+# Dev directories
+build
+config
+public
+
+# templates directory
+doc/
+
+.eslintrc.json

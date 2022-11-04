@@ -1,0 +1,50 @@
+name: Docker+Terraform
+on: [push, pull_request]
+
+jobs:
+  docker:
+    uses: NearSeaTechnologies/workflows/.github/workflows/docker-github.yaml@1.7.1
+    with:
+      filter_files: |
+          - 'src/**'
+          - 'package*.json'
+          - 'tsconfig*.json'
+          - 'Dockerfile'
+          - 'terraform/**'
+    secrets:
+      username: ${{ github.actor }}
+      password: ${{ secrets.GITHUB_TOKEN }}
+      ALL_SECRETS: ${{ toJSON(secrets) }}
+      PERSONAL_GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+      OTHER_ENVS: |
+        {}
+
+  node:
+    uses: NearSeaTechnologies/workflows/.github/workflows/node.yaml@1.7.1
+    with:
+      node_cache: yarn
+      node_install: yarn install --immutable --immutable-cache --check-cache
+      run_tests: false
+
+  terraform-validation:
+    uses: NearSeaTechnologies/workflows/.github/workflows/terraform-validation.yaml@1.7.1
+  terraform-plan:
+    uses: NearSeaTechnologies/workflows/.github/workflows/terraform-plan.yaml@1.7.1
+    with:
+      filter_files: |
+          - 'src/**'
+          - 'package*.json'
+          - 'tsconfig*.json'
+          - 'Dockerfile'
+          - 'terraform/**'
+      inject_other_envs: true
+    needs: docker
+    secrets:
+      ALL_SECRETS: ${{ toJSON(secrets) }}
+      OTHER_ENVS: |
+        {
+          "TF_VAR_DOCKER_IMAGE": "${{ needs.docker.outputs.docker_tag }}",
+          "TF_VAR_REGISTRY_USERNAME": "${{ github.actor }}",
+          "TF_VAR_REGISTRY_PASSWORD": "${{ secrets.PERSONAL_GITHUB_TOKEN }}"
+        }
+      terraform_cloud_tokens: ${{ secrets.TF_CLOUD_TOKEN }}
