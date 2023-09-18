@@ -2,7 +2,7 @@
 
 ## Description
 
-Near Sea Technologies React WebApp with Authentication boilerplate
+My approach of a React WebApp with Authentication boilerplate
 
 ## Table of Contents
 
@@ -43,18 +43,9 @@ Near Sea Technologies React WebApp with Authentication boilerplate
 
 ## Project setup
 
-A new repository can be created from this template by pressing the `Use this template` button on the repository's home page.
-
--   https://github.com/NearSeaTechnologies/boilerplate-react-with-auth
+A new repository can be created from this template by pressing the `Use this template` button
 
 After creating the new repository simply clone it and run the following commands to instantly have the app running.
-
-```bash
-git clone https://github.com/NearSeaTechnologies/{your-repo-name}.git
-cd {your-repo-name}
-cp env-example .env
-docker-compose up -d
-```
 
 ## Development & Debug
 
